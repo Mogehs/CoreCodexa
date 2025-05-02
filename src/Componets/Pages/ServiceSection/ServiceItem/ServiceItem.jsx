@@ -1,23 +1,37 @@
 import React, { useEffect } from "react";
-import { SiVorondesign } from "react-icons/si";
-import { FaConnectdevelop } from "react-icons/fa6";
+import { SiVorondesign, SiGoogleads } from "react-icons/si";
+import {
+  FaConnectdevelop,
+  FaLaravel,
+  FaWordpress,
+  FaPython,
+} from "react-icons/fa";
 import { IoCameraReverseOutline } from "react-icons/io5";
-import { FaLaravel } from "react-icons/fa";
-import { FaWordpress } from "react-icons/fa";
-import { TbUxCircle } from "react-icons/tb";
-import Hovimg from "./../../../images/projects-2.png";
-import Hovimg2 from "./../../../images/projects-3.png";
-import Hovimg3 from "./../../../images/projects-4.png";
-import { FaPython } from "react-icons/fa";
 import { RiFlutterFill } from "react-icons/ri";
 import { MdAnimation } from "react-icons/md";
 import { LiaDigitalTachographSolid } from "react-icons/lia";
-import { TbWriting } from "react-icons/tb";
-import { TbSeo } from "react-icons/tb";
-import { SiGoogleads } from "react-icons/si";
+import { TbWriting, TbSeo, TbUxCircle } from "react-icons/tb";
+import Hovimg from "./../../../images/projects-2.png";
+import Hovimg2 from "./../../../images/projects-3.png";
+import Hovimg3 from "./../../../images/projects-4.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+
+// Card animation variants
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  }),
+};
 
 const servicesData = [
   {
@@ -150,47 +164,62 @@ const servicesData = [
 
 const ServicItem = () => {
   const location = useLocation();
+
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
-  // Determine which subset of servicesData to use based on the path
+
   const displayedServices =
-    location.pathname === "/"
-      ? servicesData.slice(0, 6) // Display first 6 items on the home path
-      : servicesData; // Display all items otherwise
+    location.pathname === "/" ? servicesData.slice(0, 6) : servicesData;
 
   return (
-    <div className="h-auto w-[100%] ">
+    <div className="h-auto w-full">
       <section className="py-16 lg:px-10 font-ui-sans-serif">
         <div className="container mx-auto px-4">
           <div className="flex justify-center mb-8">
             <div className="text-center">
-              <h6 className="text-lg font-medium ">What We Do</h6>
-              <h2 className="text-4xl font-bold ">Our Services</h2>
+              <h6 className="text-lg font-medium">What We Do</h6>
+              <h2 className="text-4xl font-bold">Our Services</h2>
             </div>
           </div>
-          <div className="flex flex-wrap -mx-4" data-aos="fade-right">
+          <div className="flex flex-wrap -mx-4">
             {displayedServices.map((service, index) => (
-              <div key={index} className="  w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-                <div className="border-[#008bd0]  flex flex-col h-full  p-6 border rounded-lg">
-                  {/* Background image and overlay */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 group-hover:opacity-40 opacity-0"
+              <div key={index} className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+                <motion.div
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={cardVariants}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -5,
+                    boxShadow: "0px 10px 20px rgba(0, 139, 208, 0.2)",
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="group relative overflow-hidden bg-white border border-[#008bd0] p-6 rounded-lg flex flex-col h-full"
+                >
+                  {/* Hover Background Image */}
+                  <motion.div
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 group-hover:opacity-30 opacity-0 z-0"
                     style={{ backgroundImage: `url(${service.HovImg})` }}
-                  >
-                    {/* Dark overlay for text readability */}
-                    <div className="absolute inset-0  bg-opacity-50 transition-opacity duration-300"></div>
-                  </div>
-                  <div className="relative z-10 flex items-center justify-center mb-4 w-16 h-16 rounded-full bg-[#008bd0] mx-auto">
+                  />
+
+                  {/* Icon */}
+                  <div className="relative z-10 flex items-center justify-center mb-4 w-16 h-16 rounded-full bg-[#008bd0] hover:bg-[#a95670] mx-auto">
                     <p className="text-white">{service.icon}</p>
                   </div>
-                  <h3 className="relative z-10 text-2xl font-semibold mb-4   transition-colors duration-300 text-center">
+
+                  {/* Title */}
+                  <h3 className="relative z-10 text-2xl font-semibold mb-4 text-center text-[#1e1e2f]">
                     {service.title}
                   </h3>
-                  <p className="relative z-10 text-gray-600 mb-4  transition-colors duration-300 text-center">
+
+                  {/* Description */}
+                  <p className="relative z-10 text-gray-600 mb-4 text-center">
                     {service.description}
                   </p>
-                </div>
+                </motion.div>
               </div>
             ))}
           </div>

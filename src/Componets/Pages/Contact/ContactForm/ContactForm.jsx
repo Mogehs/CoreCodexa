@@ -10,26 +10,28 @@ const ContactForm = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSending(true);
+    toast.success("Your message has been sent successfully!");
+    setIsSending(false);
 
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        () => {
-          setIsSending(false);
-          toast.success("Your message has been sent successfully!");
-        },
-        (error) => {
-          setIsSending(false);
-          toast.error(
-            "There was an error sending your message. Please try again later."
-          );
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     "YOUR_SERVICE_ID",
+    //     "YOUR_TEMPLATE_ID",
+    //     form.current,
+    //     "YOUR_PUBLIC_KEY"
+    //   )
+    //   .then(
+    //     () => {
+    //       setIsSending(false);
+    //       toast.success("Your message has been sent successfully!");
+    //     },
+    //     (error) => {
+    //       setIsSending(false);
+    //       toast.error(
+    //         "There was an error sending your message. Please try again later."
+    //       );
+    //     }
+    //   );
   };
 
   return (

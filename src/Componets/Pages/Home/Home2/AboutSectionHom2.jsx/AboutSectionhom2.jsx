@@ -72,12 +72,7 @@ const AboutSection = () => {
                 Free Consultation
               </h3>
               <div className="contact-form mt-6">
-                <form
-                  id="contact-form"
-                  className="form"
-                  action="mail.php"
-                  method="POST"
-                >
+                <form id="contact-form" className="form">
                   <div className="space-y-4">
                     <div className="form-group">
                       <input
@@ -121,10 +116,7 @@ const AboutSection = () => {
                       ></textarea>
                     </div>
                     <div className="form-group">
-                      <button
-                        type="submit"
-                        className="btn btn-primary w-32 bg-[#121225] text-white py-3 rounded"
-                      >
+                      <button className="btn btn-primary w-32 bg-[#121225] text-white py-3 rounded">
                         Send Message
                       </button>
                     </div>

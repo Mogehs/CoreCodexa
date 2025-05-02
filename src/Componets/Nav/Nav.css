@@ -3,10 +3,10 @@ li {
 }
 li::after {
   position: absolute;
-  content: '';
+  content: "";
   height: 10%;
   width: 0%;
-  background-color: #008bd0;
+  background-color: #a95670;
   transition: 0.5s;
   bottom: 0;
   left: 0;

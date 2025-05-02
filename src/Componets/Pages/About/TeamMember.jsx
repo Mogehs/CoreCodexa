@@ -5,28 +5,42 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import { FiUser } from "react-icons/fi";
 
 const team = [
   {
-    name: "Jane Smith",
-    role: "UI/UX Designer",
-    image: "/images-team/images.jpg",
+    name: "Usama Joiya (C.E.O)",
+    role: "Full Stack WEB & App Developer",
+    image: "/images-team/usama.jpg",
   },
   {
-    name: "John Doe",
-    role: "Full Stack Developer",
-    image: "/images-team/images.jpg",
+    name: "Haseeb Abbasi",
+    role: "Business Developer",
+    image: "/images-team/haseeb.jpg",
   },
   {
-    name: "John Doe",
-    role: "Full Stack Developer",
-    image: "/images-team/images.jpg",
+    name: "M. Zeeshan Baqir",
+    role: "Python (Django) Developer",
+    image: "/images-team/zesshan.jpg",
   },
   {
-    name: "John Doe",
-    role: "Full Stack Developer",
-    image: "/images-team/images.jpg",
+    name: "Usman Akhtar",
+    role: "MERN Stack Developer",
+    image: "/images-team/usman.jpg",
+  },
+  {
+    name: "Areeba Asghar",
+    role: "Frontend Web Developer",
+    image: "/images-team/areeba.jpg",
+  },
+  {
+    name: "Nimra Hannan",
+    role: "Machine Learning Developer",
+    image: "/images-team/nimra.jpg",
+  },
+  {
+    name: "Mahnoor Mughal",
+    role: "WordPress Developer",
+    image: "/images-team/mahnoor.jpg",
   },
 ];
 
@@ -83,7 +97,7 @@ const TiltCard = ({ member }) => {
         <img
           src={member.image}
           alt={member.name}
-          className="w-24 h-24 object-cover rounded-full mx-auto border-4 border-indigo-400 shadow-md"
+          className="w-40 h-40 object-cover rounded-full mx-auto border-4 border-indigo-400 shadow-md"
           style={{ transform: "translateZ(50px)" }}
         />
         <h3
@@ -105,7 +119,7 @@ const TiltCard = ({ member }) => {
 
 const TeamShowcase = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-violet-500 px-6 py-16 text-slate-900">
+    <div className="min-h-fit bg-gradient-to-br from-indigo-500 to-violet-500 px-6 py-16 text-slate-900">
       {/* Section Header */}
       <div className="text-center mb-16">
         <h2 className="text-4xl font-extrabold text-white drop-shadow-sm">
@@ -120,7 +134,7 @@ const TeamShowcase = () => {
       </div>
 
       {/* Team Cards */}
-      <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 place-items-center">
+      <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center">
         {team.map((member, index) => (
           <TiltCard key={index} member={member} />
         ))}

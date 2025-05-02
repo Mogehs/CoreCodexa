@@ -38,12 +38,12 @@ const Wellcome = () => {
         </h3>
         <div className="space-x-3">
           <Link to="/contact">
-            <button className="bg-[#008bd0] p-2 md:p-3 w-32 md:w-40 text-white rounded-full font-bold">
+            <button className="bg-[#008bd0] hover:bg-[#a95670] p-2 md:p-3 w-32 md:w-40 text-white rounded-full font-bold transition-all">
               Contact Us
             </button>
           </Link>
-          <Link to="/services">
-            <button className="bg-[#008bd0] p-2 md:p-3 w-32 md:w-40 text-white rounded-full font-bold">
+          <Link to="/our-services">
+            <button className="bg-[#008bd0] hover:bg-[#a95670] p-2 md:p-3 w-32 md:w-40 text-white rounded-full font-bold">
               Services
             </button>
           </Link>
